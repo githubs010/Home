@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Services | Glassmorphic Bubble Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandYellow: '#FACC15',
+            brandRed: '#EF4444',
+            brandBlack: '#09090B',
+            brandWhite: '#FFFFFF'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #09090B;
+      color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Floating Bubble Background */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background: radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.18), transparent 40%),
+                  radial-gradient(circle at 85% 25%, rgba(239, 68, 68, 0.20), transparent 42%),
+                  radial-gradient(circle at 50% 85%, rgba(250, 204, 21, 0.14), transparent 45%),
+                  #09090B;
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(55px);
+      opacity: 0.45;
+      animation: floatOrb 14s infinite alternate ease-in-out;
+    }
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -30px) scale(1.12); }
+    }
+
+    /* Glassmorphic Bubble UI Cards */
+    .glass-bubble {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border-radius: 34px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-bubble:hover {
+      transform: translateY(-4px);
+      border-color: rgba(250, 204, 21, 0.65);
+      box-shadow: 0 24px 60px rgba(250, 204, 21, 0.14), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    }
+
+    .glass-bubble-white {
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(20px);
+      border: 2px solid #FFFFFF;
+      border-radius: 34px;
+      color: #09090B;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .bubble-pill {
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+    .bubble-pill:active {
+      transform: scale(0.96);
+    }
+
+    .glow-yellow {
+      box-shadow: 0 10px 30px -5px rgba(250, 204, 21, 0.55);
+    }
+    .glow-red {
+      box-shadow: 0 10px 30px -5px rgba(239, 68, 68, 0.55);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.25s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brandYellow selection:text-brandBlack">
+
+  <!-- AMBIENT GLASS BUBBLE BACKGROUND ORBS -->
+  <div class="ambient-bg">
+    <div class="floating-orb w-80 h-80 bg-brandYellow top-10 left-10"></div>
+    <div class="floating-orb w-96 h-96 bg-brandRed top-24 right-10" style="animation-delay: -5s;"></div>
+    <div class="floating-orb w-72 h-72 bg-brandYellow bottom-10 left-1/3" style="animation-delay: -9s;"></div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MINIMAL HEADER (NO NAV BAR — BRAND LEFT, LOGIN CREDENTIALS TOP RIGHT) -->
+  <!-- ===================================================================== -->
+  <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-4">
+    <!-- Brand Identity Bubble -->
+    <div onclick="switchView('home')" class="cursor-pointer flex items-center gap-3 glass-bubble px-5 py-2.5 bubble-pill border border-white/20">
+      <div class="w-11 h-11 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-xl glow-yellow">
+        <i class="fa-solid fa-house-chimney-window"></i>
+      </div>
+      <div>
+        <span class="font-black text-xl tracking-tight text-white">HOME <span class="text-brandYellow">SERVICES</span></span>
+        <span class="block text-[11px] font-bold text-brandRed uppercase tracking-widest">Managed Monthly Care</span>
+      </div>
+    </div>
+
+    <!-- TOP RIGHT: LOGIN CREDENTIALS & ROLE ACCESS BUBBLE -->
+    <div class="flex items-center gap-2.5 flex-wrap justify-end">
+      <div id="active-session-pill" class="hidden sm:flex items-center gap-2 glass-bubble px-4 py-2 bubble-pill text-xs font-extrabold">
+        <span class="w-2.5 h-2.5 rounded-full bg-brandYellow animate-ping"></span>
+        <span id="session-role-label" class="text-white">Public Home</span>
+      </div>
+
+      <button onclick="switchView('home')" id="btn-back-home" class="hidden px-4 py-2.5 bubble-pill bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs border border-white/20 flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-left text-brandYellow"></i> Home Page
+      </button>
+
+      <button onclick="openLoginDrawer()" class="px-5 py-3 bubble-pill bg-brandRed hover:bg-red-500 text-white font-black text-xs sm:text-sm glow-red flex items-center gap-2 border-2 border-white/30">
+        <i class="fa-solid fa-key text-brandYellow"></i>
+        <span>Login Credentials</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION BUBBLE -->
+  <div id="toast-box" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-xs w-full pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN VIEWPORT                                                         -->
+  <!-- ===================================================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+
+    <!-- =================================================================== -->
+    <!-- VIEW 1: PUBLIC HOME PAGE (VISUAL, MINIMAL TEXT, HIGH READABILITY)   -->
+    <!-- =================================================================== -->
+    <section id="view-home" class="fade-in space-y-10">
+
+      <!-- HERO BUBBLE SECTION -->
+      <div class="glass-bubble p-6 sm:p-10 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left 7 Cols: Bold, Minimalist Value Prop -->
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bubble-pill bg-brandYellow text-brandBlack font-black text-xs uppercase tracking-wider glow-yellow">
+              <i class="fa-solid fa-star"></i> ₹3,000 – ₹5,000 Monthly Home Subscription
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.08] text-white">
+              Spotless Homes. <br />
+              <span class="text-brandYellow">Zero Maid Stress.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-zinc-200 font-medium max-w-xl">
+              1-Click Booking • Admin-Verified Staff • 100% Backup Guarantee.
+            </p>
+
+            <!-- 3 Quick Login / Action Bubbles -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button onclick="quickLogin('customer')" class="px-6 py-3.5 bubble-pill bg-brandYellow hover:bg-yellow-300 text-brandBlack font-black text-sm glow-yellow flex items-center gap-2">
+                <i class="fa-solid fa-user-check"></i> Customer Login
+              </button>
+              <button onclick="quickLogin('admin')" class="px-6 py-3.5 bubble-pill bg-brandRed hover:bg-red-500 text-white font-black text-sm glow-red flex items-center gap-2">
+                <i class="fa-solid fa-user-shield"></i> Admin Login
+              </button>
+              <button onclick="quickLogin('employee')" class="px-5 py-3.5 bubble-pill bg-white text-brandBlack hover:bg-brandYellow font-black text-sm flex items-center gap-2">
+                <i class="fa-solid fa-id-badge text-brandRed"></i> Staff PWA
+              </button>
+            </div>
+          </div>
+
+          <!-- Right 5 Cols: Visual Service Showcase Image Bubble -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-[32px] overflow-hidden border-2 border-brandYellow shadow-2xl group">
+              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80" alt="Home Services Professional Cleaning" class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-5">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[11px] uppercase">100% Vetted Staff</span>
+                    <h3 class="text-xl font-black text-white mt-1.5">Daily Chores, Done Right</h3>
+                  </div>
+                  <div class="w-12 h-12 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-lg glow-yellow">
+                    4.9★
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 1: KEY BENEFITS (4 VISUAL BUBBLE CARDS) -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl sm:text-3xl font-black text-white flex items-center gap-2.5">
+            <span class="w-9 h-9 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-sm"><i class="fa-solid fa-award"></i></span>
+            Why Families Love Home Services
+          </h2>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-brandYellow">Core Benefits</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Benefit 1 -->
+          <div class="glass-bubble p-6 text-center space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-2xl font-black glow-yellow">
+              <i class="fa-solid fa-user-Temp"></i><i class="fa-solid fa-rotate"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">Zero Maid Absences</h3>
+            <p class="text-xs text-zinc-300 font-medium">Admin assigns an instant backup expert if your regular staff takes leave.</p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="glass-bubble p-6 text-center space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-full bg-brandRed text-white flex items-center justify-center text-2xl font-black glow-red">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">Police & KYC Verified</h3>
+            <p class="text-xs text-zinc-300 font-medium">Every helper is background-checked, uniformed, and professionally trained.</p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="glass-bubble p-6 text-center space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-full bg-white text-brandBlack flex items-center justify-center text-2xl font-black">
+              <i class="fa-solid fa-indian-rupee-sign text-brandRed"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">Fixed ₹3k–₹5k Plans</h3>
+            <p class="text-xs text-zinc-300 font-medium">26 to 30 guaranteed visits every month. Zero surge fees or bargaining.</p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="glass-bubble p-6 text-center space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-2xl font-black glow-yellow">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">GPS Tracked Visits</h3>
+            <p class="text-xs text-zinc-300 font-medium">Live arrival check-in and automatic visit counter deduction.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: VISUAL USE CASES (WITH PHOTOS & ICONS) -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl sm:text-3xl font-black text-white flex items-center gap-2.5">
+            <span class="w-9 h-9 rounded-full bg-brandRed text-white flex items-center justify-center text-sm"><i class="fa-solid fa-sparkles"></i></span>
+            Daily Household Use Cases
+          </h2>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-brandRed">What We Do Daily</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Use Case 1 -->
+          <div class="glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Kitchen & Cooking Prep" class="h-40 w-full object-cover" />
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="px-3 py-0.5 bubble-pill bg-brandYellow text-brandBlack font-black text-[10px] uppercase">₹5,000 Plan</span>
+                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-bowl-food text-brandYellow mr-1.5"></i>Fresh Kitchen Prep</h4>
+                <p class="text-xs text-zinc-300 mt-1">Chopping veggies, rolling rotis, & homestyle dal/curry prep.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Use Case 2 -->
+          <div class="glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Floor Sweeping & Mopping" class="h-40 w-full object-cover" />
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="px-3 py-0.5 bubble-pill bg-white text-brandBlack font-black text-[10px] uppercase">₹3,000 Plan</span>
+                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-broom text-brandYellow mr-1.5"></i>Floor & Room Shine</h4>
+                <p class="text-xs text-zinc-300 mt-1">Daily sweeping, disinfectant mopping, & living room dusting.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Use Case 3 -->
+          <div class="glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=600&q=80" alt="Utensil Dishwashing" class="h-40 w-full object-cover" />
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="px-3 py-0.5 bubble-pill bg-white text-brandBlack font-black text-[10px] uppercase">₹3,000 Plan</span>
+                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-sink text-brandYellow mr-1.5"></i>Sparkling Utensils</h4>
+                <p class="text-xs text-zinc-300 mt-1">Sanitizing pots, plates, tiffins, & stove-top cleaning.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Use Case 4 -->
+          <div class="glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80" alt="Laundry & Folding" class="h-40 w-full object-cover" />
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div>
+                <span class="px-3 py-0.5 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">₹4,000 Plan</span>
+                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-shirt text-brandYellow mr-1.5"></i>Laundry & Folding</h4>
+                <p class="text-xs text-zinc-300 mt-1">Washing machine loads, drying clothes, & neat wardrobe folding.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: HOW HOME SERVICES BEATS COMPETITORS (CLEAN VISUAL MATRIX) -->
+      <div class="glass-bubble-white p-6 sm:p-8 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-xs uppercase">Customer Satisfaction Guarantee</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-brandBlack mt-2">How We Beat Local Maids & Hourly Apps</h2>
+          </div>
+          <button onclick="openLoginDrawer()" class="px-5 py-2.5 bubble-pill bg-brandBlack text-brandYellow font-black text-xs hover:bg-zinc-800">
+            Try Live Demo Portals →
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-brandBlack text-white">
+                <th class="p-4 rounded-tl-3xl font-black">Feature</th>
+                <th class="p-4 bg-brandYellow text-brandBlack font-black text-base"><i class="fa-solid fa-crown mr-1"></i> Home Services</th>
+                <th class="p-4 font-bold text-zinc-300">Local Unorganized Maid</th>
+                <th class="p-4 rounded-tr-3xl font-bold text-zinc-300">Hourly Instant Apps</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-200 font-bold">
+              <tr>
+                <td class="p-4 font-black">Monthly Cost</td>
+                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">₹3,000 – ₹5,000 Fixed</td>
+                <td class="p-4 text-zinc-600">₹3,500+ (Extra Festive Demands)</td>
+                <td class="p-4 text-brandRed">₹9,000 – ₹14,000 / mo</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-black">When Maid is Sick</td>
+                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">✓ Instant Admin Backup</td>
+                <td class="p-4 text-brandRed">✗ No Backup (You Do Chores)</td>
+                <td class="p-4 text-zinc-600">New Stranger Every Day</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-black">Security & KYC</td>
+                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">✓ Police & Aadhaar Verified</td>
+                <td class="p-4 text-brandRed">✗ Zero Background Check</td>
+                <td class="p-4 text-zinc-600">Basic ID Only</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-black">Attendance & Time</td>
+                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">✓ GPS Check-In + Live Board</td>
+                <td class="p-4 text-brandRed">✗ Late Arrivals / Early Exit</td>
+                <td class="p-4 text-zinc-600">App Timer</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 2: CUSTOMER PORTAL (3-CLICK GLASS BUBBLE WORKFLOW)             -->
+    <!-- =================================================================== -->
+    <section id="view-customer" class="hidden fade-in space-y-6">
+      <!-- Top Customer Bar -->
+      <div class="glass-bubble p-5 flex flex-wrap items-center justify-between gap-4 border-2 border-brandYellow">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-xl">
+            <i class="fa-solid fa-house-user"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black uppercase text-brandYellow">Customer Account:</span>
+              <select id="cust-switcher" onchange="changeCustomer(this.value)" class="bg-black/60 text-white font-black text-sm border border-white/25 bubble-pill px-3 py-1"></select>
+            </div>
+            <p id="cust-address" class="text-xs text-zinc-300 mt-0.5"></p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="bg-brandRed px-4 py-2 bubble-pill text-xs font-black">
+            Visits Left: <span id="cust-visits" class="text-brandYellow text-sm ml-1">23</span>
+          </div>
+          <button onclick="openModal('modal-new-customer')" class="px-4 py-2 bubble-pill bg-white text-brandBlack font-black text-xs">
+            + Add Subscriber
+          </button>
+        </div>
+      </div>
+
+      <!-- 3-Click Package Selector + Request Form + Live Tracker -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 5 Cols: Book Chore in 1 Click -->
+        <div class="lg:col-span-5 glass-bubble-white p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-black text-brandBlack flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-brandRed text-white flex items-center justify-center text-xs">1</span>
+              Book Today's Service
+            </h3>
+            <span id="cust-plan-badge" class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-xs">₹4,000 Plan</span>
+          </div>
+
+          <!-- Switch Monthly Package Pills -->
+          <div class="grid grid-cols-3 gap-2 pt-1">
+            <button onclick="selectCustomerPlan('PLAN_3K')" class="py-2 bubble-pill bg-zinc-100 hover:bg-brandYellow font-black text-xs border border-zinc-300">₹3,000/mo</button>
+            <button onclick="selectCustomerPlan('PLAN_4K')" class="py-2 bubble-pill bg-brandYellow font-black text-xs border border-brandBlack">₹4,000/mo</button>
+            <button onclick="selectCustomerPlan('PLAN_5K')" class="py-2 bubble-pill bg-brandRed text-white font-black text-xs">₹5,000/mo</button>
+          </div>
+
+          <form onsubmit="submitCustomerTask(event)" class="space-y-3 pt-2 text-xs">
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="font-black uppercase text-zinc-600 block mb-1">Date</label>
+                <input type="date" id="c-date" required class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3 py-2.5 font-bold" />
+              </div>
+              <div>
+                <label class="font-black uppercase text-zinc-600 block mb-1">Time Slot</label>
+                <select id="c-time" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3 py-2.5 font-bold">
+                  <option value="08:00 AM">08:00 AM</option>
+                  <option value="09:30 AM" selected>09:30 AM</option>
+                  <option value="11:30 AM">11:30 AM</option>
+                  <option value="04:30 PM">04:30 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="font-black uppercase text-zinc-600 block mb-1.5">Pick Chores</label>
+              <div class="grid grid-cols-2 gap-2 font-bold">
+                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                  <input type="checkbox" name="c-chore" value="Floor Sweep & Mop" checked class="accent-brandRed w-4 h-4" /> Sweep & Mop
+                </label>
+                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                  <input type="checkbox" name="c-chore" value="Utensil Wash" checked class="accent-brandRed w-4 h-4" /> Utensils
+                </label>
+                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                  <input type="checkbox" name="c-chore" value="Kitchen Prep" class="accent-brandRed w-4 h-4" /> Kitchen Prep
+                </label>
+                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                  <input type="checkbox" name="c-chore" value="Laundry Fold" class="accent-brandRed w-4 h-4" /> Laundry
+                </label>
+              </div>
+            </div>
+
+            <input type="text" id="c-note" placeholder="Short note (e.g., Clean balcony first)" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5 font-semibold" />
+
+            <button type="submit" class="w-full py-3.5 bubble-pill bg-brandRed hover:bg-red-600 text-white font-black text-xs uppercase tracking-wider glow-red">
+              <i class="fa-solid fa-paper-plane mr-1"></i> Send Task to Admin
+            </button>
+          </form>
+        </div>
+
+        <!-- Right 7 Cols: Live Task Bubble Status -->
+        <div class="lg:col-span-7 glass-bubble p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-black text-white">Live Service Tracker</h3>
+            <button onclick="quickLogin('admin')" class="px-3.5 py-1.5 bubble-pill bg-brandYellow text-brandBlack font-black text-xs">
+              Assign in Admin →
+            </button>
+          </div>
+          <div id="cust-task-list" class="space-y-3"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 3: ADMIN DISPATCH CONSOLE (ASSIGN USER TASKS TO EMPLOYEES)     -->
+    <!-- =================================================================== -->
+    <section id="view-admin" class="hidden fade-in space-y-6">
+      <!-- KPI Bubbles -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-bubble p-5 border-l-4 border-brandYellow">
+          <span class="text-xs font-bold text-zinc-400 uppercase">Monthly Revenue</span>
+          <p id="adm-mrr" class="text-2xl font-black text-brandYellow mt-1">₹12,000</p>
+        </div>
+        <div class="glass-bubble p-5 border-l-4 border-brandRed">
+          <span class="text-xs font-bold text-zinc-400 uppercase">Unassigned Tasks</span>
+          <p id="adm-pending" class="text-2xl font-black text-brandRed mt-1">1</p>
+        </div>
+        <div class="glass-bubble p-5 border-l-4 border-white">
+          <span class="text-xs font-bold text-zinc-400 uppercase">Active Assigned</span>
+          <p id="adm-active" class="text-2xl font-black text-white mt-1">1</p>
+        </div>
+        <div class="glass-bubble p-5 border-l-4 border-brandYellow">
+          <span class="text-xs font-bold text-zinc-400 uppercase">Completed Today</span>
+          <p id="adm-done" class="text-2xl font-black text-brandYellow mt-1">1</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left 7 Cols: Admin Assignment Queue -->
+        <div class="lg:col-span-7 glass-bubble-white p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="px-3 py-0.5 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">Admin Dispatcher</span>
+              <h3 class="text-xl font-black text-brandBlack mt-1">Assign User Tasks to Staff</h3>
+            </div>
+            <button onclick="quickLogin('employee')" class="px-4 py-2 bubble-pill bg-brandBlack text-brandYellow font-black text-xs">
+              Open Staff PWA →
+            </button>
+          </div>
+
+          <div id="admin-queue-list" class="space-y-3"></div>
+        </div>
+
+        <!-- Right 5 Cols: Staff Roster & Payroll Export -->
+        <div class="lg:col-span-5 glass-bubble p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-black text-brandYellow">Staff & Payroll</h3>
+            <div class="flex gap-2">
+              <button onclick="openModal('modal-new-emp')" class="px-3 py-1.5 bubble-pill bg-white text-brandBlack font-black text-xs">+ Staff</button>
+              <button onclick="exportCSV()" class="px-3 py-1.5 bubble-pill bg-brandRed text-white font-black text-xs"><i class="fa-solid fa-file-csv mr-1"></i>CSV</button>
+            </div>
+          </div>
+          <div id="admin-staff-list" class="space-y-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 4: EMPLOYEE MOBILE PWA (GPS START & COMPLETE JOB)              -->
+    <!-- =================================================================== -->
+    <section id="view-employee" class="hidden fade-in">
+      <div class="max-w-md mx-auto glass-bubble p-5 border-2 border-brandYellow space-y-5">
+        <div class="flex items-center justify-between">
+          <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-xs uppercase">Employee PWA</span>
+          <span class="text-xs font-bold text-brandYellow"><i class="fa-solid fa-location-crosshairs"></i> GPS Ready</span>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-zinc-400 block mb-1">Active Field Staff:</label>
+          <select id="emp-switcher" onchange="changeEmployee(this.value)" class="w-full bg-brandYellow text-brandBlack font-black text-sm bubble-pill px-4 py-2.5"></select>
+        </div>
+
+        <div id="emp-job-list" class="space-y-3"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- TOP-RIGHT LOGIN CREDENTIALS MODAL (CUSTOMER / ADMIN / EMPLOYEE)       -->
+  <!-- ===================================================================== -->
+  <div id="modal-login" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="glass-bubble-white max-w-lg w-full p-6 sm:p-8 border-4 border-brandYellow space-y-5 fade-in">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">1-Click Demo Access</span>
+          <h3 class="text-2xl font-black text-brandBlack mt-1">Portal Login Credentials</h3>
+        </div>
+        <button onclick="closeModal('modal-login')" class="w-9 h-9 rounded-full bg-brandBlack text-white font-black"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <p class="text-xs font-bold text-zinc-600">Select any role card below to auto-fill credentials and log right into that portal:</p>
+
+      <!-- 3 Role Credential Cards -->
+      <div class="space-y-3">
+        <!-- Customer Credentials -->
+        <div onclick="quickLogin('customer')" class="cursor-pointer p-4 rounded-3xl bg-zinc-100 hover:bg-brandYellow/30 border-2 border-brandBlack flex items-center justify-between transition">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-lg border border-brandBlack">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+              <span class="font-black text-sm text-brandBlack block">1. Customer Login</span>
+              <span class="text-xs font-bold text-zinc-600">ID: <code class="text-brandBlack">priya@homeservices.in</code> • Pass: <code class="text-brandBlack">cust123</code></span>
+            </div>
+          </div>
+          <span class="px-3.5 py-1.5 bubble-pill bg-brandBlack text-brandYellow font-black text-xs">Login →</span>
+        </div>
+
+        <!-- Admin Credentials -->
+        <div onclick="quickLogin('admin')" class="cursor-pointer p-4 rounded-3xl bg-zinc-100 hover:bg-brandRed/20 border-2 border-brandRed flex items-center justify-between transition">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-brandRed text-white flex items-center justify-center font-black text-lg">
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div>
+              <span class="font-black text-sm text-brandBlack block">2. Admin Dispatcher Login</span>
+              <span class="text-xs font-bold text-zinc-600">ID: <code class="text-brandBlack">admin@homeservices.in</code> • Pass: <code class="text-brandBlack">admin123</code></span>
+            </div>
+          </div>
+          <span class="px-3.5 py-1.5 bubble-pill bg-brandRed text-white font-black text-xs">Login →</span>
+        </div>
+
+        <!-- Employee Credentials -->
+        <div onclick="quickLogin('employee')" class="cursor-pointer p-4 rounded-3xl bg-zinc-100 hover:bg-brandYellow/30 border-2 border-brandBlack flex items-center justify-between transition">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-brandBlack text-brandYellow flex items-center justify-center font-black text-lg">
+              <i class="fa-solid fa-id-badge"></i>
+            </div>
+            <div>
+              <span class="font-black text-sm text-brandBlack block">3. Employee (Staff) PWA Login</span>
+              <span class="text-xs font-bold text-zinc-600">Phone: <code class="text-brandBlack">+91 97411 10203</code> • OTP: <code class="text-brandBlack">4455</code></span>
+            </div>
+          </div>
+          <span class="px-3.5 py-1.5 bubble-pill bg-brandBlack text-white font-black text-xs">Login →</span>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-zinc-200 flex justify-between items-center text-xs">
+        <button onclick="resetDemo()" class="text-brandRed font-black underline">Reset Demo Data</button>
+        <span class="text-zinc-500 font-bold">Yellow • Red • Black • White Theme</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW CUSTOMER -->
+  <div id="modal-new-customer" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="glass-bubble-white max-w-md w-full p-6 space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-black text-lg">Add Customer</h3>
+        <button onclick="closeModal('modal-new-customer')" class="w-8 h-8 rounded-full bg-brandBlack text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form onsubmit="createCustomer(event)" class="space-y-3 text-xs font-bold">
+        <input type="text" id="nc-name" required placeholder="Full Name" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5" />
+        <input type="text" id="nc-phone" required placeholder="Phone Number" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5" />
+        <input type="text" id="nc-addr" required placeholder="Flat & Building Address" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5" />
+        <select id="nc-plan" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5">
+          <option value="PLAN_3K">₹3,000/mo (26 Visits)</option>
+          <option value="PLAN_4K" selected>₹4,000/mo (26 Visits)</option>
+          <option value="PLAN_5K">₹5,000/mo (30 Visits)</option>
+        </select>
+        <button type="submit" class="w-full py-3 bubble-pill bg-brandRed text-white font-black uppercase">Save Customer</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW STAFF -->
+  <div id="modal-new-emp" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="glass-bubble-white max-w-md w-full p-6 space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-black text-lg">Add Field Staff</h3>
+        <button onclick="closeModal('modal-new-emp')" class="w-8 h-8 rounded-full bg-brandBlack text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form onsubmit="createEmp(event)" class="space-y-3 text-xs font-bold">
+        <input type="text" id="ne-name" required placeholder="Staff Name" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5" />
+        <input type="text" id="ne-phone" required placeholder="Phone Number" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5" />
+        <input type="number" id="ne-sal" required value="13000" placeholder="Monthly Salary (INR)" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5" />
+        <button type="submit" class="w-full py-3 bubble-pill bg-brandBlack text-brandYellow font-black uppercase">Add to Roster</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- STATE & LOGIC CONTROLLER                                              -->
+  <!-- ===================================================================== -->
+  <script>
+    const STORAGE_KEY = 'HOME_SERVICES_BUBBLE_V5';
+
+    const PLANS = {
+      PLAN_3K: { name: '₹3,000 Essential', price: 3000, visits: 26 },
+      PLAN_4K: { name: '₹4,000 Standard', price: 4000, visits: 26 },
+      PLAN_5K: { name: '₹5,000 Complete', price: 5000, visits: 30 }
+    };
+
+    function todayISO() {
+      return new Date().toISOString().split('T')[0];
+    }
+
+    function defaultDB() {
+      const t = todayISO();
+      return {
+        view: 'home',
+        activeUserId: 'USR-1',
+        activeEmpId: 'EMP-1',
+        users: [
+          { id: 'USR-1', name: 'Priya Sharma', phone: '+91 98450 23100', addr: 'Flat 302, Emerald Residency', planId: 'PLAN_4K', visits: 23 },
+          { id: 'USR-2', name: 'Karthik Reddy', phone: '+91 99801 55412', addr: 'Villa 14, Palm Meadows', planId: 'PLAN_5K', visits: 28 }
+        ],
+        employees: [
+          { id: 'EMP-1', name: 'Lakshmi Devi', phone: '+91 97411 10203', salary: 12500 },
+          { id: 'EMP-2', name: 'Sunitha Bai', phone: '+91 96322 44510', salary: 14000 },
+          { id: 'EMP-3', name: 'Renukaamma', phone: '+91 91104 88321', salary: 11500 }
+        ],
+        tasks: [
+          { id: 'TSK-101', userId: 'USR-1', empId: null, date: t, time: '09:30 AM', chores: ['Floor Sweep & Mop', 'Utensil Wash'], note: 'Clean kitchen balcony first', status: 'PENDING' },
+          { id: 'TSK-102', userId: 'USR-2', empId: 'EMP-1', date: t, time: '11:30 AM', chores: ['Kitchen Prep', 'Utensil Wash'], note: 'Chop veggies for lunch', status: 'ASSIGNED' }
+        ]
+      };
+    }
+
+    let db = loadDB();
+
+    function loadDB() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : defaultDB();
+      } catch (e) {
+        return defaultDB();
+      }
+    }
+
+    function saveDB() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    }
+
+    function toast(msg) {
+      const box = document.getElementById('toast-box');
+      const el = document.createElement('div');
+      el.className = 'pointer-events-auto glass-bubble px-4 py-3 text-xs font-black text-white border-2 border-brandYellow flex items-center justify-between gap-2 fade-in';
+      el.innerHTML = `<span><i class="fa-solid fa-bolt text-brandYellow mr-1.5"></i>${msg}</span>`;
+      box.appendChild(el);
+      setTimeout(() => { if (el.parentElement) el.remove(); }, 3500);
+    }
+
+    function switchView(viewName) {
+      db.view = viewName;
+      saveDB();
+      ['home', 'customer', 'admin', 'employee'].forEach(v => {
+        const sec = document.getElementById('view-' + v);
+        if (sec) sec.classList.toggle('hidden', v !== viewName);
+      });
+
+      const backBtn = document.getElementById('btn-back-home');
+      if (backBtn) backBtn.classList.toggle('hidden', viewName === 'home');
+
+      const roleLabels = {
+        home: 'Public Home',
+        customer: 'Logged In: Customer',
+        admin: 'Logged In: Admin',
+        employee: 'Logged In: Staff PWA'
+      };
+      document.getElementById('session-role-label').textContent = roleLabels[viewName] || 'Public Home';
+      renderAll();
+    }
+
+    function openLoginDrawer() {
+      openModal('modal-login');
+    }
+
+    function quickLogin(role) {
+      closeModal('modal-login');
+      switchView(role);
+      toast(`Logged into ${role.toUpperCase()} portal!`);
+    }
+
+    // CUSTOMER PORTAL
+    function renderCustomer() {
+      const sel = document.getElementById('cust-switcher');
+      sel.innerHTML = db.users.map(u => `<option value="${u.id}" ${u.id === db.activeUserId ? 'selected' : ''}>${u.name}</option>`).join('');
+
+      const u = db.users.find(x => x.id === db.activeUserId) || db.users[0];
+      if (!u) return;
+      const plan = PLANS[u.planId] || PLANS.PLAN_4K;
+
+      document.getElementById('cust-address').textContent = `${u.addr} (${u.phone})`;
+      document.getElementById('cust-visits').textContent = u.visits;
+      document.getElementById('cust-plan-badge').textContent = plan.name;
+
+      const dEl = document.getElementById('c-date');
+      if (!dEl.value) dEl.value = todayISO();
+
+      const myTasks = db.tasks.filter(t => t.userId === u.id);
+      const listEl = document.getElementById('cust-task-list');
+      if (myTasks.length === 0) {
+        listEl.innerHTML = `<div class="p-8 text-center text-xs text-zinc-400">No bookings yet. Submit one on the left!</div>`;
+      } else {
+        listEl.innerHTML = myTasks.map(t => {
+          const emp = db.employees.find(e => e.id === t.empId);
+          const badge = t.status === 'COMPLETED'
+            ? '<span class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-[10px]">✓ COMPLETED</span>'
+            : t.status === 'PENDING'
+            ? '<span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[10px]">WAITING ADMIN</span>'
+            : `<span class="px-3 py-1 bubble-pill bg-white text-brandBlack font-black text-[10px]">ASSIGNED: ${emp ? emp.name : ''}</span>`;
+
+          return `
+            <div class="p-4 rounded-3xl bg-white/10 border border-white/15 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-black text-brandYellow">${t.id}</span>
+                  <span class="font-bold text-white">${t.date} • ${t.time}</span>
+                </div>
+                <p class="text-zinc-200 font-semibold mt-1">${t.chores.join(' • ')}</p>
+              </div>
+              <div>${badge}</div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function changeCustomer(id) {
+      db.activeUserId = id;
+      saveDB();
+      renderAll();
+    }
+
+    function selectCustomerPlan(planId) {
+      const u = db.users.find(x => x.id === db.activeUserId);
+      const p = PLANS[planId];
+      if (!u || !p) return;
+      u.planId = planId;
+      u.visits = p.visits;
+      saveDB();
+      renderAll();
+      toast(`Activated ${p.name}!`);
+    }
+
+    function submitCustomerTask(e) {
+      e.preventDefault();
+      const u = db.users.find(x => x.id === db.activeUserId);
+      if (!u) return;
+      const date = document.getElementById('c-date').value;
+      const time = document.getElementById('c-time').value;
+      const note = document.getElementById('c-note').value.trim();
+      const chores = Array.from(document.querySelectorAll('input[name="c-chore"]:checked')).map(c => c.value);
+
+      if (chores.length === 0) {
+        toast('Pick at least 1 chore!');
+        return;
+      }
+
+      const t = {
+        id: 'TSK-' + Math.floor(100 + Math.random() * 900),
+        userId: u.id,
+        empId: null,
+        date,
+        time,
+        chores,
+        note,
+        status: 'PENDING'
+      };
+      db.tasks.unshift(t);
+      document.getElementById('c-note').value = '';
+      saveDB();
+      renderAll();
+      toast(`Task ${t.id} sent to Admin!`);
+    }
+
+    // ADMIN PORTAL
+    function renderAdmin() {
+      const mrr = db.users.reduce((s, u) => s + (PLANS[u.planId]?.price || 0), 0);
+      document.getElementById('adm-mrr').textContent = '₹' + mrr.toLocaleString('en-IN');
+      document.getElementById('adm-pending').textContent = db.tasks.filter(t => t.status === 'PENDING').length;
+      document.getElementById('adm-active').textContent = db.tasks.filter(t => t.status === 'ASSIGNED' || t.status === 'IN_PROGRESS').length;
+      document.getElementById('adm-done').textContent = db.tasks.filter(t => t.status === 'COMPLETED').length;
+
+      const qEl = document.getElementById('admin-queue-list');
+      qEl.innerHTML = db.tasks.map(t => {
+        const u = db.users.find(x => x.id === t.userId);
+        const emp = db.employees.find(x => x.id === t.empId);
+        const opts = db.employees.map(e => `<option value="${e.id}" ${t.empId === e.id ? 'selected' : ''}>${e.name}</option>`).join('');
+
+        return `
+          <div class="p-4 rounded-3xl bg-zinc-100 border-2 border-zinc-300 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 bubble-pill bg-brandBlack text-brandYellow font-black">${t.id}</span>
+                <span class="font-black text-brandBlack">${u ? u.name : ''}</span>
+                <span class="text-zinc-500 font-bold">${t.time}</span>
+              </div>
+              <p class="text-zinc-700 font-bold mt-1">${t.chores.join(' • ')}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              ${t.status !== 'COMPLETED' ? `
+                <select id="asel-${t.id}" class="bg-white border-2 border-brandBlack bubble-pill px-3 py-1.5 font-black">
+                  <option value="">-- Staff --</option>
+                  ${opts}
+                </select>
+                <button onclick="adminAssign('${t.id}')" class="px-4 py-1.5 bubble-pill bg-brandRed text-white font-black">Assign</button>
+              ` : `<span class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black">✓ Done (${emp ? emp.name : ''})</span>`}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const sEl = document.getElementById('admin-staff-list');
+      sEl.innerHTML = db.employees.map(e => {
+        const done = db.tasks.filter(t => t.empId === e.id && t.status === 'COMPLETED').length;
+        const pay = Math.round((done / 26) * e.salary);
+        return `
+          <div class="p-3.5 rounded-3xl bg-white/10 border border-white/15 flex items-center justify-between text-xs">
+            <div>
+              <span class="font-black text-white block">${e.name}</span>
+              <span class="text-zinc-400">${e.phone}</span>
+            </div>
+            <div class="text-right">
+              <span class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black">₹${pay.toLocaleString('en-IN')}</span>
+              <span class="block text-[10px] text-zinc-400 mt-0.5">${done}/26 Visits</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function adminAssign(taskId) {
+      const sel = document.getElementById('asel-' + taskId);
+      const empId = sel ? sel.value : '';
+      if (!empId) {
+        toast('Select a staff member first!');
+        return;
+      }
+      const t = db.tasks.find(x => x.id === taskId);
+      if (!t) return;
+      t.empId = empId;
+      t.status = 'ASSIGNED';
+      db.activeEmpId = empId;
+      saveDB();
+      renderAll();
+      toast(`Assigned ${t.id}!`);
+    }
+
+    // EMPLOYEE PORTAL
+    function renderEmployee() {
+      const sel = document.getElementById('emp-switcher');
+      sel.innerHTML = db.employees.map(e => `<option value="${e.id}" ${e.id === db.activeEmpId ? 'selected' : ''}>${e.name}</option>`).join('');
+
+      const myTasks = db.tasks.filter(t => t.empId === db.activeEmpId);
+      const listEl = document.getElementById('emp-job-list');
+      if (myTasks.length === 0) {
+        listEl.innerHTML = `<div class="p-8 text-center text-xs text-zinc-400">No jobs assigned yet.</div>`;
+      } else {
+        listEl.innerHTML = myTasks.map(t => {
+          const u = db.users.find(x => x.id === t.userId);
+          return `
+            <div class="p-4 rounded-3xl bg-white text-brandBlack space-y-3 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="px-2.5 py-0.5 bubble-pill bg-brandBlack text-brandYellow font-black">${t.time}</span>
+                <span class="font-black text-brandRed">${t.status}</span>
+              </div>
+              <div>
+                <h4 class="font-black text-sm">${u ? u.name : ''}</h4>
+                <p class="text-zinc-600 font-bold">${u ? u.addr : ''}</p>
+              </div>
+              <div class="p-2.5 rounded-2xl bg-zinc-100 font-extrabold">${t.chores.join(' • ')}</div>
+              ${t.status === 'ASSIGNED' ? `
+                <button onclick="empStart('${t.id}')" class="w-full py-3 bubble-pill bg-brandBlack text-brandYellow font-black uppercase">
+                  <i class="fa-solid fa-location-crosshairs mr-1"></i> GPS Start Job
+                </button>
+              ` : ''}
+              ${t.status === 'IN_PROGRESS' ? `
+                <button onclick="empComplete('${t.id}')" class="w-full py-3 bubble-pill bg-brandRed text-white font-black uppercase">
+                  <i class="fa-solid fa-check-double mr-1"></i> Complete & Deduct Visit
+                </button>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function changeEmployee(id) {
+      db.activeEmpId = id;
+      saveDB();
+      renderAll();
+    }
+
+    function empStart(id) {
+      const t = db.tasks.find(x => x.id === id);
+      if (!t) return;
+      t.status = 'IN_PROGRESS';
+      saveDB();
+      renderAll();
+      toast('GPS Verified! Job Started.');
+    }
+
+    function empComplete(id) {
+      const t = db.tasks.find(x => x.id === id);
+      if (!t) return;
+      t.status = 'COMPLETED';
+      const u = db.users.find(x => x.id === t.userId);
+      if (u && u.visits > 0) u.visits -= 1;
+      saveDB();
+      renderAll();
+      toast('Job Completed! 1 Visit Deducted.');
+    }
+
+    // MODALS & HELPERS
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    function createCustomer(e) {
+      e.preventDefault();
+      const name = document.getElementById('nc-name').value.trim();
+      const phone = document.getElementById('nc-phone').value.trim();
+      const addr = document.getElementById('nc-addr').value.trim();
+      const planId = document.getElementById('nc-plan').value;
+      const u = { id: 'USR-' + Math.floor(10 + Math.random() * 90), name, phone, addr, planId, visits: PLANS[planId].visits };
+      db.users.push(u);
+      db.activeUserId = u.id;
+      saveDB();
+      closeModal('modal-new-customer');
+      e.target.reset();
+      renderAll();
+      toast(`Added ${name}!`);
+    }
+
+    function createEmp(e) {
+      e.preventDefault();
+      const name = document.getElementById('ne-name').value.trim();
+      const phone = document.getElementById('ne-phone').value.trim();
+      const salary = Number(document.getElementById('ne-sal').value) || 12500;
+      const emp = { id: 'EMP-' + Math.floor(10 + Math.random() * 90), name, phone, salary };
+      db.employees.push(emp);
+      db.activeEmpId = emp.id;
+      saveDB();
+      closeModal('modal-new-emp');
+      e.target.reset();
+      renderAll();
+      toast(`Added ${name}!`);
+    }
+
+    function exportCSV() {
+      const rows = ['ID,Name,Phone,BaseSalary,CompletedVisits'];
+      db.employees.forEach(e => {
+        const done = db.tasks.filter(t => t.empId === e.id && t.status === 'COMPLETED').length;
+        rows.push(`${e.id},"${e.name}","${e.phone}",${e.salary},${done}`);
+      });
+      const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'HomeServices_Payroll.csv';
+      a.click();
+      toast('CSV Downloaded!');
+    }
+
+    function resetDemo() {
+      localStorage.removeItem(STORAGE_KEY);
+      db = defaultDB();
+      saveDB();
+      closeModal('modal-login');
+      switchView('home');
+      toast('Demo Reset!');
+    }
+
+    function renderAll() {
+      renderCustomer();
+      renderAdmin();
+      renderEmployee();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      switchView(db.view || 'home');
+    });
+  </script>
+</body>
+</html>
