@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home Services | Glassmorphic Bubble Platform</title>
+  <title>Home Services | Glassmorphic Bubble Marketplace & Monthly Care</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script>
@@ -35,42 +35,41 @@
       inset: 0;
       z-index: -1;
       overflow: hidden;
-      background: radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.18), transparent 40%),
-                  radial-gradient(circle at 85% 25%, rgba(239, 68, 68, 0.20), transparent 42%),
-                  radial-gradient(circle at 50% 85%, rgba(250, 204, 21, 0.14), transparent 45%),
+      background: radial-gradient(circle at 12% 18%, rgba(250, 204, 21, 0.20), transparent 38%),
+                  radial-gradient(circle at 88% 22%, rgba(239, 68, 68, 0.22), transparent 40%),
+                  radial-gradient(circle at 50% 82%, rgba(250, 204, 21, 0.16), transparent 45%),
                   #09090B;
     }
-
     .floating-orb {
       position: absolute;
       border-radius: 9999px;
-      filter: blur(55px);
+      filter: blur(60px);
       opacity: 0.45;
       animation: floatOrb 14s infinite alternate ease-in-out;
     }
     @keyframes floatOrb {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, -30px) scale(1.12); }
+      100% { transform: translate(35px, -35px) scale(1.15); }
     }
 
     /* Glassmorphic Bubble UI Cards */
     .glass-bubble {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1.5px solid rgba(255, 255, 255, 0.20);
       border-radius: 34px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.28);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .glass-bubble:hover {
       transform: translateY(-4px);
-      border-color: rgba(250, 204, 21, 0.65);
-      box-shadow: 0 24px 60px rgba(250, 204, 21, 0.14), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+      border-color: rgba(250, 204, 21, 0.75);
+      box-shadow: 0 24px 60px rgba(250, 204, 21, 0.16), inset 0 1px 2px rgba(255, 255, 255, 0.4);
     }
 
     .glass-bubble-white {
-      background: rgba(255, 255, 255, 0.93);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       border: 2px solid #FFFFFF;
       border-radius: 34px;
@@ -83,7 +82,7 @@
       transition: all 0.2s ease;
     }
     .bubble-pill:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
     }
 
     .glow-yellow {
@@ -112,32 +111,32 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- MINIMAL HEADER (NO NAV BAR — BRAND LEFT, LOGIN CREDENTIALS TOP RIGHT) -->
+  <!-- TOP HEADER (NO NAV BAR — BRAND BUBBLE LEFT, LOGIN CREDENTIALS RIGHT)  -->
   <!-- ===================================================================== -->
-  <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-4">
-    <!-- Brand Identity Bubble -->
-    <div onclick="switchView('home')" class="cursor-pointer flex items-center gap-3 glass-bubble px-5 py-2.5 bubble-pill border border-white/20">
+  <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-4 sticky top-0 z-40">
+    <!-- Brand Bubble -->
+    <div onclick="switchView('home')" class="cursor-pointer flex items-center gap-3 glass-bubble px-5 py-2.5 bubble-pill border border-white/25">
       <div class="w-11 h-11 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-xl glow-yellow">
-        <i class="fa-solid fa-house-chimney-window"></i>
+        <i class="fa-solid fa-house-chimney-sparkles"></i>
       </div>
       <div>
         <span class="font-black text-xl tracking-tight text-white">HOME <span class="text-brandYellow">SERVICES</span></span>
-        <span class="block text-[11px] font-bold text-brandRed uppercase tracking-widest">Managed Monthly Care</span>
+        <span class="block text-[10px] font-extrabold text-brandRed uppercase tracking-widest">Doorstep Experts • ₹3k–₹5k Plans</span>
       </div>
     </div>
 
-    <!-- TOP RIGHT: LOGIN CREDENTIALS & ROLE ACCESS BUBBLE -->
+    <!-- TOP RIGHT: LOGIN CREDENTIALS & ROLE ACCESS BUBBLES -->
     <div class="flex items-center gap-2.5 flex-wrap justify-end">
-      <div id="active-session-pill" class="hidden sm:flex items-center gap-2 glass-bubble px-4 py-2 bubble-pill text-xs font-extrabold">
+      <div class="hidden md:flex items-center gap-2 glass-bubble px-4 py-2 bubble-pill text-xs font-extrabold">
         <span class="w-2.5 h-2.5 rounded-full bg-brandYellow animate-ping"></span>
-        <span id="session-role-label" class="text-white">Public Home</span>
+        <span id="session-role-label" class="text-white">Home Page</span>
       </div>
 
-      <button onclick="switchView('home')" id="btn-back-home" class="hidden px-4 py-2.5 bubble-pill bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs border border-white/20 flex items-center gap-1.5">
-        <i class="fa-solid fa-arrow-left text-brandYellow"></i> Home Page
+      <button onclick="switchView('home')" id="btn-back-home" class="hidden px-4 py-2.5 bubble-pill bg-white text-brandBlack hover:bg-brandYellow font-black text-xs flex items-center gap-1.5 shadow-lg">
+        <i class="fa-solid fa-arrow-left text-brandRed"></i> Back to Home
       </button>
 
-      <button onclick="openLoginDrawer()" class="px-5 py-3 bubble-pill bg-brandRed hover:bg-red-500 text-white font-black text-xs sm:text-sm glow-red flex items-center gap-2 border-2 border-white/30">
+      <button onclick="openModal('modal-login')" class="px-5 py-3 bubble-pill bg-brandRed hover:bg-red-500 text-white font-black text-xs sm:text-sm glow-red flex items-center gap-2 border-2 border-white/40">
         <i class="fa-solid fa-key text-brandYellow"></i>
         <span>Login Credentials</span>
       </button>
@@ -150,381 +149,464 @@
   <!-- ===================================================================== -->
   <!-- MAIN VIEWPORT                                                         -->
   <!-- ===================================================================== -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5">
 
     <!-- =================================================================== -->
-    <!-- VIEW 1: PUBLIC HOME PAGE (VISUAL, MINIMAL TEXT, HIGH READABILITY)   -->
+    <!-- VIEW 1: PUBLIC HOME PAGE (INSPIRED BY URBAN COMPANY + GLASS BUBBLE) -->
     <!-- =================================================================== -->
     <section id="view-home" class="fade-in space-y-10">
 
-      <!-- HERO BUBBLE SECTION -->
-      <div class="glass-bubble p-6 sm:p-10 relative overflow-hidden">
+      <!-- 1. HERO SECTION: CATEGORY ICON BUBBLES LEFT + 4-PHOTO COLLAGE RIGHT -->
+      <div class="glass-bubble p-6 sm:p-9 relative overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          <!-- Left 7 Cols: Bold, Minimalist Value Prop -->
-          <div class="lg:col-span-7 space-y-5">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 bubble-pill bg-brandYellow text-brandBlack font-black text-xs uppercase tracking-wider glow-yellow">
-              <i class="fa-solid fa-star"></i> ₹3,000 – ₹5,000 Monthly Home Subscription
+          <!-- Left 6 Cols: "Home services at your doorstep" + 6 Category Bubbles + Trust Stats -->
+          <div class="lg:col-span-6 space-y-6">
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-xs uppercase tracking-wider glow-yellow">
+                <i class="fa-solid fa-bolt"></i> Instant & Monthly Managed Care
+              </span>
+              <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-[1.1] text-white mt-3">
+                Home services at your <span class="text-brandYellow">doorstep.</span>
+              </h1>
+              <p class="text-xs sm:text-sm text-zinc-300 font-semibold mt-2">
+                Click any category bubble to book instantly or activate a ₹3,000–₹5,000 monthly plan.
+              </p>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.08] text-white">
-              Spotless Homes. <br />
-              <span class="text-brandYellow">Zero Maid Stress.</span>
-            </h1>
+            <!-- "What are you looking for?" 6 Glass Bubble Category Selector -->
+            <div class="bg-black/40 p-4 rounded-[28px] border border-white/15 space-y-3">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-brandYellow block">What are you looking for?</span>
+              <div class="grid grid-cols-3 gap-3">
+                <button onclick="quickBookService('Trained House Help (Daily Maid)', 3000)" class="p-3 rounded-2xl bg-white/10 hover:bg-brandYellow hover:text-brandBlack border border-white/15 transition text-center group">
+                  <div class="w-10 h-10 mx-auto rounded-full bg-brandYellow text-brandBlack group-hover:bg-brandBlack group-hover:text-brandYellow flex items-center justify-center text-lg font-black mb-1.5">
+                    <i class="fa-solid fa-broom"></i>
+                  </div>
+                  <span class="text-[11px] font-extrabold block leading-tight">Trained House Help</span>
+                </button>
 
-            <p class="text-base sm:text-lg text-zinc-200 font-medium max-w-xl">
-              1-Click Booking • Admin-Verified Staff • 100% Backup Guarantee.
-            </p>
+                <button onclick="quickBookService('Intense Bathroom & Kitchen Cleaning', 499)" class="p-3 rounded-2xl bg-white/10 hover:bg-brandYellow hover:text-brandBlack border border-white/15 transition text-center group">
+                  <div class="w-10 h-10 mx-auto rounded-full bg-brandRed text-white flex items-center justify-center text-lg font-black mb-1.5">
+                    <i class="fa-solid fa-Bath"></i><i class="fa-solid fa-shower"></i>
+                  </div>
+                  <span class="text-[11px] font-extrabold block leading-tight">Bathroom & Kitchen</span>
+                </button>
 
-            <!-- 3 Quick Login / Action Bubbles -->
-            <div class="flex flex-wrap items-center gap-3 pt-2">
-              <button onclick="quickLogin('customer')" class="px-6 py-3.5 bubble-pill bg-brandYellow hover:bg-yellow-300 text-brandBlack font-black text-sm glow-yellow flex items-center gap-2">
-                <i class="fa-solid fa-user-check"></i> Customer Login
-              </button>
-              <button onclick="quickLogin('admin')" class="px-6 py-3.5 bubble-pill bg-brandRed hover:bg-red-500 text-white font-black text-sm glow-red flex items-center gap-2">
-                <i class="fa-solid fa-user-shield"></i> Admin Login
-              </button>
-              <button onclick="quickLogin('employee')" class="px-5 py-3.5 bubble-pill bg-white text-brandBlack hover:bg-brandYellow font-black text-sm flex items-center gap-2">
-                <i class="fa-solid fa-id-badge text-brandRed"></i> Staff PWA
-              </button>
+                <button onclick="quickBookService('Homestyle Kitchen & Cooking Prep', 5000)" class="p-3 rounded-2xl bg-white/10 hover:bg-brandYellow hover:text-brandBlack border border-white/15 transition text-center group">
+                  <div class="w-10 h-10 mx-auto rounded-full bg-white text-brandBlack flex items-center justify-center text-lg font-black mb-1.5">
+                    <i class="fa-solid fa-bowl-food text-brandRed"></i>
+                  </div>
+                  <span class="text-[11px] font-extrabold block leading-tight">Cooking & Meal Prep</span>
+                </button>
+
+                <button onclick="quickBookService('Foam-Jet AC & Appliance Repair', 599)" class="p-3 rounded-2xl bg-white/10 hover:bg-brandYellow hover:text-brandBlack border border-white/15 transition text-center group">
+                  <div class="w-10 h-10 mx-auto rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-lg font-black mb-1.5">
+                    <i class="fa-solid fa-snowflake"></i>
+                  </div>
+                  <span class="text-[11px] font-extrabold block leading-tight">AC & Appliance</span>
+                </button>
+
+                <button onclick="quickBookService('Electrician, Plumber & Carpenters', 299)" class="p-3 rounded-2xl bg-white/10 hover:bg-brandYellow hover:text-brandBlack border border-white/15 transition text-center group">
+                  <div class="w-10 h-10 mx-auto rounded-full bg-brandRed text-white flex items-center justify-center text-lg font-black mb-1.5">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                  </div>
+                  <span class="text-[11px] font-extrabold block leading-tight">Plumber & Electrician</span>
+                </button>
+
+                <button onclick="quickBookService('Salon, Spa & Massage at Home', 999)" class="p-3 rounded-2xl bg-white/10 hover:bg-brandYellow hover:text-brandBlack border border-white/15 transition text-center group">
+                  <div class="w-10 h-10 mx-auto rounded-full bg-white text-brandBlack flex items-center justify-center text-lg font-black mb-1.5">
+                    <i class="fa-solid fa-spa text-brandRed"></i>
+                  </div>
+                  <span class="text-[11px] font-extrabold block leading-tight">Salon & Spa Care</span>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <!-- Right 5 Cols: Visual Service Showcase Image Bubble -->
-          <div class="lg:col-span-5">
-            <div class="relative rounded-[32px] overflow-hidden border-2 border-brandYellow shadow-2xl group">
-              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80" alt="Home Services Professional Cleaning" class="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition duration-500" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-5">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[11px] uppercase">100% Vetted Staff</span>
-                    <h3 class="text-xl font-black text-white mt-1.5">Daily Chores, Done Right</h3>
-                  </div>
-                  <div class="w-12 h-12 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-lg glow-yellow">
-                    4.9★
-                  </div>
+            <!-- Rating & Customer Count Bubbles (4.8★ & 12M+ Inspired) -->
+            <div class="flex flex-wrap items-center gap-6 pt-1">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-base glow-yellow">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                  <span class="text-xl font-black text-white block leading-none">4.8 ★</span>
+                  <span class="text-[11px] text-zinc-400 font-bold">Service Rating</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-brandRed text-white flex items-center justify-center font-black text-base glow-red">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                  <span class="text-xl font-black text-white block leading-none">100% KYC</span>
+                  <span class="text-[11px] text-zinc-400 font-bold">Admin-Verified Staff</span>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Right 6 Cols: 2x2 Visual Photo Collage Grid (Like Urban Company PDF Top Right) -->
+          <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+            <div class="relative rounded-[28px] overflow-hidden border-2 border-brandYellow h-44 sm:h-52 group">
+              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80" alt="Trained House Help" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3.5">
+                <span class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-[11px]">Trained House Help</span>
+              </div>
+            </div>
+            <div class="relative rounded-[28px] overflow-hidden border-2 border-white/30 h-44 sm:h-52 group">
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Homestyle Kitchen Prep" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3.5">
+                <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[11px]">Daily Cooking Prep</span>
+              </div>
+            </div>
+            <div class="relative rounded-[28px] overflow-hidden border-2 border-white/30 h-44 sm:h-52 group">
+              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Deep Bathroom Cleaning" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3.5">
+                <span class="px-3 py-1 bubble-pill bg-white text-brandBlack font-black text-[11px]">Bathroom Deep Clean</span>
+              </div>
+            </div>
+            <div class="relative rounded-[28px] overflow-hidden border-2 border-brandRed h-44 sm:h-52 group">
+              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="AC & Electrical Service" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3.5">
+                <span class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-[11px]">AC & Home Repair</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- SECTION 1: KEY BENEFITS (4 VISUAL BUBBLE CARDS) -->
+      <!-- 2. "IN THE SPOTLIGHT" — 3 PROMO BANNERS (DIRECTLY INSPIRED BY YOUR PDF) -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-2xl sm:text-3xl font-black text-white flex items-center gap-2.5">
-            <span class="w-9 h-9 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-sm"><i class="fa-solid fa-award"></i></span>
-            Why Families Love Home Services
+          <h2 class="text-2xl font-black text-white flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-xs"><i class="fa-solid fa-fire"></i></span>
+            In the Spotlight
           </h2>
-          <span class="text-xs font-extrabold uppercase tracking-wider text-brandYellow">Core Benefits</span>
+          <span class="text-xs font-extrabold text-brandYellow uppercase">1-Click Instant Booking</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <!-- Benefit 1 -->
-          <div class="glass-bubble p-6 text-center space-y-3">
-            <div class="w-16 h-16 mx-auto rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-2xl font-black glow-yellow">
-              <i class="fa-solid fa-user-Temp"></i><i class="fa-solid fa-rotate"></i>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Spotlight 1: Trained house help in minutes -->
+          <div class="glass-bubble overflow-hidden relative h-52 flex items-end p-5 border-2 border-brandYellow group">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Trained house help" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
+            <div class="relative z-10 space-y-2 max-w-[75%]">
+              <span class="px-2.5 py-0.5 bubble-pill bg-brandYellow text-brandBlack font-black text-[10px] uppercase">₹3,000/mo Pass</span>
+              <h3 class="text-xl font-black text-white leading-tight">Trained house help in minutes</h3>
+              <button onclick="quickBookService('Trained House Help (Daily Maid)', 3000)" class="px-4 py-2 bubble-pill bg-brandRed hover:bg-red-500 text-white font-black text-xs glow-red">
+                Book now →
+              </button>
             </div>
-            <h3 class="text-lg font-black text-white">Zero Maid Absences</h3>
-            <p class="text-xs text-zinc-300 font-medium">Admin assigns an instant backup expert if your regular staff takes leave.</p>
           </div>
 
-          <!-- Benefit 2 -->
-          <div class="glass-bubble p-6 text-center space-y-3">
-            <div class="w-16 h-16 mx-auto rounded-full bg-brandRed text-white flex items-center justify-center text-2xl font-black glow-red">
-              <i class="fa-solid fa-shield-halved"></i>
+          <!-- Spotlight 2: Deep clean your bathroom -->
+          <div class="glass-bubble overflow-hidden relative h-52 flex items-end p-5 border-2 border-white/25 group">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=700&q=80" alt="Deep clean bathroom" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
+            <div class="relative z-10 space-y-2 max-w-[75%]">
+              <span class="px-2.5 py-0.5 bubble-pill bg-white text-brandBlack font-black text-[10px] uppercase"> Starts ₹499</span>
+              <h3 class="text-xl font-black text-white leading-tight">Deep clean your bathroom</h3>
+              <button onclick="quickBookService('Intense Bathroom Cleaning', 499)" class="px-4 py-2 bubble-pill bg-brandYellow hover:bg-yellow-300 text-brandBlack font-black text-xs glow-yellow">
+                Book now →
+              </button>
             </div>
-            <h3 class="text-lg font-black text-white">Police & KYC Verified</h3>
-            <p class="text-xs text-zinc-300 font-medium">Every helper is background-checked, uniformed, and professionally trained.</p>
           </div>
 
-          <!-- Benefit 3 -->
-          <div class="glass-bubble p-6 text-center space-y-3">
-            <div class="w-16 h-16 mx-auto rounded-full bg-white text-brandBlack flex items-center justify-center text-2xl font-black">
-              <i class="fa-solid fa-indian-rupee-sign text-brandRed"></i>
+          <!-- Spotlight 3: Complete Kitchen & Cooking Pass -->
+          <div class="glass-bubble overflow-hidden relative h-52 flex items-end p-5 border-2 border-brandRed group">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80" alt="Complete Kitchen Care" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
+            <div class="relative z-10 space-y-2 max-w-[75%]">
+              <span class="px-2.5 py-0.5 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">₹5,000/mo Pass</span>
+              <h3 class="text-xl font-black text-white leading-tight">Daily homestyle cook & kitchen care</h3>
+              <button onclick="quickBookService('Daily Cook & Kitchen Care', 5000)" class="px-4 py-2 bubble-pill bg-white hover:bg-brandYellow text-brandBlack font-black text-xs">
+                Book now →
+              </button>
             </div>
-            <h3 class="text-lg font-black text-white">Fixed ₹3k–₹5k Plans</h3>
-            <p class="text-xs text-zinc-300 font-medium">26 to 30 guaranteed visits every month. Zero surge fees or bargaining.</p>
-          </div>
-
-          <!-- Benefit 4 -->
-          <div class="glass-bubble p-6 text-center space-y-3">
-            <div class="w-16 h-16 mx-auto rounded-full bg-brandYellow text-brandBlack flex items-center justify-center text-2xl font-black glow-yellow">
-              <i class="fa-solid fa-location-crosshairs"></i>
-            </div>
-            <h3 class="text-lg font-black text-white">GPS Tracked Visits</h3>
-            <p class="text-xs text-zinc-300 font-medium">Live arrival check-in and automatic visit counter deduction.</p>
           </div>
         </div>
       </div>
 
-      <!-- SECTION 2: VISUAL USE CASES (WITH PHOTOS & ICONS) -->
+      <!-- 3. MOST BOOKED SERVICES & CLEANING ESSENTIALS (IMAGE BUBBLE CARDS) -->
       <div class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-2xl sm:text-3xl font-black text-white flex items-center gap-2.5">
-            <span class="w-9 h-9 rounded-full bg-brandRed text-white flex items-center justify-center text-sm"><i class="fa-solid fa-sparkles"></i></span>
-            Daily Household Use Cases
+          <h2 class="text-2xl font-black text-white flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-brandRed text-white flex items-center justify-center text-xs"><i class="fa-solid fa-star"></i></span>
+            Most Booked Services & Use Cases
           </h2>
-          <span class="text-xs font-extrabold uppercase tracking-wider text-brandRed">What We Do Daily</span>
+          <span class="text-xs font-extrabold text-zinc-400">Tap any card to request</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <!-- Use Case 1 -->
-          <div class="glass-bubble overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Kitchen & Cooking Prep" class="h-40 w-full object-cover" />
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-              <div>
-                <span class="px-3 py-0.5 bubble-pill bg-brandYellow text-brandBlack font-black text-[10px] uppercase">₹5,000 Plan</span>
-                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-bowl-food text-brandYellow mr-1.5"></i>Fresh Kitchen Prep</h4>
-                <p class="text-xs text-zinc-300 mt-1">Chopping veggies, rolling rotis, & homestyle dal/curry prep.</p>
-              </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <!-- Card 1 -->
+          <div onclick="quickBookService('Intense Bathroom Cleaning', 519)" class="cursor-pointer glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" class="h-32 w-full object-cover" />
+            <div class="p-3.5 space-y-1">
+              <h4 class="text-xs font-black text-white">Intense Bathroom Clean</h4>
+              <p class="text-[11px] text-brandYellow font-bold">★ 4.79 (4.3M) • ₹519</p>
             </div>
           </div>
 
-          <!-- Use Case 2 -->
-          <div class="glass-bubble overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Floor Sweeping & Mopping" class="h-40 w-full object-cover" />
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-              <div>
-                <span class="px-3 py-0.5 bubble-pill bg-white text-brandBlack font-black text-[10px] uppercase">₹3,000 Plan</span>
-                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-broom text-brandYellow mr-1.5"></i>Floor & Room Shine</h4>
-                <p class="text-xs text-zinc-300 mt-1">Daily sweeping, disinfectant mopping, & living room dusting.</p>
-              </div>
+          <!-- Card 2 -->
+          <div onclick="quickBookService('Floor Sweeping & Mopping (Monthly)', 3000)" class="cursor-pointer glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=500&q=80" class="h-32 w-full object-cover" />
+            <div class="p-3.5 space-y-1">
+              <h4 class="text-xs font-black text-white">Daily Floor Sweep & Mop</h4>
+              <p class="text-[11px] text-brandYellow font-bold">★ 4.91 (26 Visits) • ₹3,000</p>
             </div>
           </div>
 
-          <!-- Use Case 3 -->
-          <div class="glass-bubble overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=600&q=80" alt="Utensil Dishwashing" class="h-40 w-full object-cover" />
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-              <div>
-                <span class="px-3 py-0.5 bubble-pill bg-white text-brandBlack font-black text-[10px] uppercase">₹3,000 Plan</span>
-                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-sink text-brandYellow mr-1.5"></i>Sparkling Utensils</h4>
-                <p class="text-xs text-zinc-300 mt-1">Sanitizing pots, plates, tiffins, & stove-top cleaning.</p>
-              </div>
+          <!-- Card 3 -->
+          <div onclick="quickBookService('Foam-Jet AC Service', 599)" class="cursor-pointer glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=80" class="h-32 w-full object-cover" />
+            <div class="p-3.5 space-y-1">
+              <h4 class="text-xs font-black text-white">Foam-Jet AC Service</h4>
+              <p class="text-[11px] text-brandYellow font-bold">★ 4.77 (1.8M) • ₹599</p>
             </div>
           </div>
 
-          <!-- Use Case 4 -->
-          <div class="glass-bubble overflow-hidden flex flex-col">
-            <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&q=80" alt="Laundry & Folding" class="h-40 w-full object-cover" />
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-              <div>
-                <span class="px-3 py-0.5 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">₹4,000 Plan</span>
-                <h4 class="text-base font-black text-white mt-2"><i class="fa-solid fa-shirt text-brandYellow mr-1.5"></i>Laundry & Folding</h4>
-                <p class="text-xs text-zinc-300 mt-1">Washing machine loads, drying clothes, & neat wardrobe folding.</p>
-              </div>
+          <!-- Card 4 -->
+          <div onclick="quickBookService('Utensil & Kitchen Cleaning (Monthly)', 4000)" class="cursor-pointer glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=500&q=80" class="h-32 w-full object-cover" />
+            <div class="p-3.5 space-y-1">
+              <h4 class="text-xs font-black text-white">Utensils & Laundry Care</h4>
+              <p class="text-[11px] text-brandYellow font-bold">★ 4.88 (26 Visits) • ₹4,000</p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div onclick="quickBookService('Plumber, Tap & Fan Installation', 199)" class="cursor-pointer glass-bubble overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=500&q=80" class="h-32 w-full object-cover" />
+            <div class="p-3.5 space-y-1">
+              <h4 class="text-xs font-black text-white">Tap, Fan & Switch Repair</h4>
+              <p class="text-[11px] text-brandYellow font-bold">★ 4.82 (39K) • ₹199</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- SECTION 3: HOW HOME SERVICES BEATS COMPETITORS (CLEAN VISUAL MATRIX) -->
-      <div class="glass-bubble-white p-6 sm:p-8 space-y-5">
-        <div class="flex flex-wrap items-center justify-between gap-3">
+      <!-- 4. KEY BENEFITS & HOW WE SATISFY CUSTOMERS BETTER THAN COMPETITORS -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        
+        <!-- Left 5 Cols: 4 Visual Benefit Bubbles -->
+        <div class="lg:col-span-5 glass-bubble p-6 flex flex-col justify-between space-y-4">
           <div>
-            <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-xs uppercase">Customer Satisfaction Guarantee</span>
-            <h2 class="text-2xl sm:text-3xl font-black text-brandBlack mt-2">How We Beat Local Maids & Hourly Apps</h2>
+            <span class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-[10px] uppercase">Core Benefits</span>
+            <h3 class="text-2xl font-black text-white mt-2">Why Customers Trust Us</h3>
           </div>
-          <button onclick="openLoginDrawer()" class="px-5 py-2.5 bubble-pill bg-brandBlack text-brandYellow font-black text-xs hover:bg-zinc-800">
-            Try Live Demo Portals →
+
+          <div class="grid grid-cols-2 gap-3.5">
+            <div class="p-4 rounded-3xl bg-white/10 border border-white/15 space-y-1.5">
+              <i class="fa-solid fa-rotate text-brandYellow text-xl"></i>
+              <h4 class="font-black text-xs text-white">100% Backup Maid</h4>
+              <p class="text-[11px] text-zinc-300">Admin assigns a replacement if your staff is on leave.</p>
+            </div>
+            <div class="p-4 rounded-3xl bg-white/10 border border-white/15 space-y-1.5">
+              <i class="fa-solid fa-user-shield text-brandRed text-xl"></i>
+              <h4 class="font-black text-xs text-white">Police & KYC Vetted</h4>
+              <p class="text-[11px] text-zinc-300">Aadhaar & background checked before dispatch.</p>
+            </div>
+            <div class="p-4 rounded-3xl bg-white/10 border border-white/15 space-y-1.5">
+              <i class="fa-solid fa-wallet text-brandYellow text-xl"></i>
+              <h4 class="font-black text-xs text-white">₹3k–₹5k Monthly</h4>
+              <p class="text-[11px] text-zinc-300">Predictable monthly package. Zero surge shocks.</p>
+            </div>
+            <div class="p-4 rounded-3xl bg-white/10 border border-white/15 space-y-1.5">
+              <i class="fa-solid fa-location-crosshairs text-brandRed text-xl"></i>
+              <h4 class="font-black text-xs text-white">GPS Verified</h4>
+              <p class="text-[11px] text-zinc-300">On-site check-in & live visit count tracking.</p>
+            </div>
+          </div>
+
+          <button onclick="openModal('modal-login')" class="w-full py-3 bubble-pill bg-brandYellow text-brandBlack font-black text-xs uppercase glow-yellow">
+            Login to Customer / Admin Portal →
           </button>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs sm:text-sm">
-            <thead>
-              <tr class="bg-brandBlack text-white">
-                <th class="p-4 rounded-tl-3xl font-black">Feature</th>
-                <th class="p-4 bg-brandYellow text-brandBlack font-black text-base"><i class="fa-solid fa-crown mr-1"></i> Home Services</th>
-                <th class="p-4 font-bold text-zinc-300">Local Unorganized Maid</th>
-                <th class="p-4 rounded-tr-3xl font-bold text-zinc-300">Hourly Instant Apps</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-zinc-200 font-bold">
-              <tr>
-                <td class="p-4 font-black">Monthly Cost</td>
-                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">₹3,000 – ₹5,000 Fixed</td>
-                <td class="p-4 text-zinc-600">₹3,500+ (Extra Festive Demands)</td>
-                <td class="p-4 text-brandRed">₹9,000 – ₹14,000 / mo</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-black">When Maid is Sick</td>
-                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">✓ Instant Admin Backup</td>
-                <td class="p-4 text-brandRed">✗ No Backup (You Do Chores)</td>
-                <td class="p-4 text-zinc-600">New Stranger Every Day</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-black">Security & KYC</td>
-                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">✓ Police & Aadhaar Verified</td>
-                <td class="p-4 text-brandRed">✗ Zero Background Check</td>
-                <td class="p-4 text-zinc-600">Basic ID Only</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-black">Attendance & Time</td>
-                <td class="p-4 bg-brandYellow/25 font-black text-brandBlack">✓ GPS Check-In + Live Board</td>
-                <td class="p-4 text-brandRed">✗ Late Arrivals / Early Exit</td>
-                <td class="p-4 text-zinc-600">App Timer</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Right 7 Cols: Competitor Comparison Table (Minimal Text, High Contrast) -->
+        <div class="lg:col-span-7 glass-bubble-white p-6 flex flex-col justify-between space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">Competitive Advantage</span>
+              <h3 class="text-2xl font-black text-brandBlack mt-1">How Home Services Beats Others</h3>
+            </div>
+            <span class="px-3 py-1 bubble-pill bg-brandBlack text-brandYellow font-black text-xs">99.4% Satisfaction</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-brandBlack text-white">
+                  <th class="p-3.5 rounded-tl-2xl">What Matters</th>
+                  <th class="p-3.5 bg-brandYellow text-brandBlack font-black">★ Home Services</th>
+                  <th class="p-3.5 text-zinc-300">Local Maid</th>
+                  <th class="p-3.5 rounded-tr-2xl text-zinc-300">Other Apps</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zinc-200 font-bold">
+                <tr>
+                  <td class="p-3.5 font-black">Monthly Cost</td>
+                  <td class="p-3.5 bg-brandYellow/25 font-black text-brandBlack">₹3,000 – ₹5,000 Fixed</td>
+                  <td class="p-3.5 text-zinc-600">Unfixed + Bonus</td>
+                  <td class="p-3.5 text-brandRed">₹9,000+/mo</td>
+                </tr>
+                <tr>
+                  <td class="p-3.5 font-black">Absentee Backup</td>
+                  <td class="p-3.5 bg-brandYellow/25 font-black text-brandBlack">✓ Admin Sends Backup</td>
+                  <td class="p-3.5 text-brandRed">✗ No Backup</td>
+                  <td class="p-3.5 text-zinc-600">Random Worker</td>
+                </tr>
+                <tr>
+                  <td class="p-3.5 font-black">Safety & KYC</td>
+                  <td class="p-3.5 bg-brandYellow/25 font-black text-brandBlack">✓ 100% Police + ID Check</td>
+                  <td class="p-3.5 text-brandRed">✗ Unverified</td>
+                  <td class="p-3.5 text-zinc-600">Basic ID</td>
+                </tr>
+                <tr>
+                  <td class="p-3.5 font-black">Tracking</td>
+                  <td class="p-3.5 bg-brandYellow/25 font-black text-brandBlack">✓ Live GPS + Admin Board</td>
+                  <td class="p-3.5 text-brandRed">✗ None</td>
+                  <td class="p-3.5 text-zinc-600">App Only</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </div>
 
     </section>
 
     <!-- =================================================================== -->
-    <!-- VIEW 2: CUSTOMER PORTAL (3-CLICK GLASS BUBBLE WORKFLOW)             -->
+    <!-- VIEW 2: CUSTOMER PORTAL (LOGGED-IN USER)                            -->
     <!-- =================================================================== -->
     <section id="view-customer" class="hidden fade-in space-y-6">
-      <!-- Top Customer Bar -->
       <div class="glass-bubble p-5 flex flex-wrap items-center justify-between gap-4 border-2 border-brandYellow">
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-xl">
-            <i class="fa-solid fa-house-user"></i>
+            <i class="fa-solid fa-user"></i>
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <span class="text-xs font-black uppercase text-brandYellow">Customer Account:</span>
-              <select id="cust-switcher" onchange="changeCustomer(this.value)" class="bg-black/60 text-white font-black text-sm border border-white/25 bubble-pill px-3 py-1"></select>
+              <span class="text-xs font-black uppercase text-brandYellow">Customer:</span>
+              <select id="cust-switcher" onchange="changeCustomer(this.value)" class="bg-black/70 text-white font-black text-sm border border-white/25 bubble-pill px-3 py-1"></select>
             </div>
             <p id="cust-address" class="text-xs text-zinc-300 mt-0.5"></p>
           </div>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
           <div class="bg-brandRed px-4 py-2 bubble-pill text-xs font-black">
             Visits Left: <span id="cust-visits" class="text-brandYellow text-sm ml-1">23</span>
           </div>
           <button onclick="openModal('modal-new-customer')" class="px-4 py-2 bubble-pill bg-white text-brandBlack font-black text-xs">
-            + Add Subscriber
+            + New User
           </button>
         </div>
       </div>
 
-      <!-- 3-Click Package Selector + Request Form + Live Tracker -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- Left 5 Cols: Book Chore in 1 Click -->
+        <!-- Book Task Form -->
         <div class="lg:col-span-5 glass-bubble-white p-6 space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-lg font-black text-brandBlack flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-brandRed text-white flex items-center justify-center text-xs">1</span>
-              Book Today's Service
-            </h3>
+            <h3 class="text-lg font-black text-brandBlack">Raise Task Request</h3>
             <span id="cust-plan-badge" class="px-3 py-1 bubble-pill bg-brandYellow text-brandBlack font-black text-xs">₹4,000 Plan</span>
           </div>
 
-          <!-- Switch Monthly Package Pills -->
-          <div class="grid grid-cols-3 gap-2 pt-1">
+          <div class="grid grid-cols-3 gap-2">
             <button onclick="selectCustomerPlan('PLAN_3K')" class="py-2 bubble-pill bg-zinc-100 hover:bg-brandYellow font-black text-xs border border-zinc-300">₹3,000/mo</button>
             <button onclick="selectCustomerPlan('PLAN_4K')" class="py-2 bubble-pill bg-brandYellow font-black text-xs border border-brandBlack">₹4,000/mo</button>
             <button onclick="selectCustomerPlan('PLAN_5K')" class="py-2 bubble-pill bg-brandRed text-white font-black text-xs">₹5,000/mo</button>
           </div>
 
-          <form onsubmit="submitCustomerTask(event)" class="space-y-3 pt-2 text-xs">
+          <form onsubmit="submitCustomerTask(event)" class="space-y-3 text-xs">
             <div class="grid grid-cols-2 gap-2.5">
-              <div>
-                <label class="font-black uppercase text-zinc-600 block mb-1">Date</label>
-                <input type="date" id="c-date" required class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3 py-2.5 font-bold" />
-              </div>
-              <div>
-                <label class="font-black uppercase text-zinc-600 block mb-1">Time Slot</label>
-                <select id="c-time" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3 py-2.5 font-bold">
-                  <option value="08:00 AM">08:00 AM</option>
-                  <option value="09:30 AM" selected>09:30 AM</option>
-                  <option value="11:30 AM">11:30 AM</option>
-                  <option value="04:30 PM">04:30 PM</option>
-                </select>
-              </div>
+              <input type="date" id="c-date" required class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3 py-2.5 font-bold" />
+              <select id="c-time" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3 py-2.5 font-bold">
+                <option value="08:00 AM">08:00 AM</option>
+                <option value="09:30 AM" selected>09:30 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="04:30 PM">04:30 PM</option>
+              </select>
             </div>
 
-            <div>
-              <label class="font-black uppercase text-zinc-600 block mb-1.5">Pick Chores</label>
-              <div class="grid grid-cols-2 gap-2 font-bold">
-                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
-                  <input type="checkbox" name="c-chore" value="Floor Sweep & Mop" checked class="accent-brandRed w-4 h-4" /> Sweep & Mop
-                </label>
-                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
-                  <input type="checkbox" name="c-chore" value="Utensil Wash" checked class="accent-brandRed w-4 h-4" /> Utensils
-                </label>
-                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
-                  <input type="checkbox" name="c-chore" value="Kitchen Prep" class="accent-brandRed w-4 h-4" /> Kitchen Prep
-                </label>
-                <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
-                  <input type="checkbox" name="c-chore" value="Laundry Fold" class="accent-brandRed w-4 h-4" /> Laundry
-                </label>
-              </div>
+            <div class="grid grid-cols-2 gap-2 font-bold">
+              <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                <input type="checkbox" name="c-chore" value="Floor Sweep & Mop" checked class="accent-brandRed w-4 h-4" /> Sweep & Mop
+              </label>
+              <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                <input type="checkbox" name="c-chore" value="Utensil Wash" checked class="accent-brandRed w-4 h-4" /> Utensils
+              </label>
+              <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                <input type="checkbox" name="c-chore" value="Bathroom Clean" class="accent-brandRed w-4 h-4" /> Bathroom Clean
+              </label>
+              <label class="flex items-center gap-2 bg-zinc-100 p-2.5 rounded-2xl cursor-pointer border border-zinc-300">
+                <input type="checkbox" name="c-chore" value="Kitchen Prep" class="accent-brandRed w-4 h-4" /> Kitchen Prep
+              </label>
             </div>
 
-            <input type="text" id="c-note" placeholder="Short note (e.g., Clean balcony first)" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5 font-semibold" />
+            <input type="text" id="c-note" placeholder="Special instructions for Admin / Staff" class="w-full bg-zinc-100 border-2 border-zinc-300 rounded-2xl px-3.5 py-2.5 font-semibold" />
 
             <button type="submit" class="w-full py-3.5 bubble-pill bg-brandRed hover:bg-red-600 text-white font-black text-xs uppercase tracking-wider glow-red">
-              <i class="fa-solid fa-paper-plane mr-1"></i> Send Task to Admin
+              <i class="fa-solid fa-paper-plane mr-1"></i> Send Request to Admin
             </button>
           </form>
         </div>
 
-        <!-- Right 7 Cols: Live Task Bubble Status -->
+        <!-- Customer Task Status List -->
         <div class="lg:col-span-7 glass-bubble p-6 space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-lg font-black text-white">Live Service Tracker</h3>
-            <button onclick="quickLogin('admin')" class="px-3.5 py-1.5 bubble-pill bg-brandYellow text-brandBlack font-black text-xs">
-              Assign in Admin →
+            <h3 class="text-lg font-black text-white">My Requested Tasks</h3>
+            <button onclick="quickLogin('admin')" class="px-4 py-1.5 bubble-pill bg-brandYellow text-brandBlack font-black text-xs">
+              Open Admin Dispatch →
             </button>
           </div>
           <div id="cust-task-list" class="space-y-3"></div>
         </div>
-
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- VIEW 3: ADMIN DISPATCH CONSOLE (ASSIGN USER TASKS TO EMPLOYEES)     -->
+    <!-- VIEW 3: ADMIN DISPATCH PORTAL (ASSIGN TASKS FROM REGISTERED USERS)  -->
     <!-- =================================================================== -->
     <section id="view-admin" class="hidden fade-in space-y-6">
-      <!-- KPI Bubbles -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="glass-bubble p-5 border-l-4 border-brandYellow">
           <span class="text-xs font-bold text-zinc-400 uppercase">Monthly Revenue</span>
           <p id="adm-mrr" class="text-2xl font-black text-brandYellow mt-1">₹12,000</p>
         </div>
         <div class="glass-bubble p-5 border-l-4 border-brandRed">
-          <span class="text-xs font-bold text-zinc-400 uppercase">Unassigned Tasks</span>
+          <span class="text-xs font-bold text-zinc-400 uppercase">Unassigned Queue</span>
           <p id="adm-pending" class="text-2xl font-black text-brandRed mt-1">1</p>
         </div>
         <div class="glass-bubble p-5 border-l-4 border-white">
-          <span class="text-xs font-bold text-zinc-400 uppercase">Active Assigned</span>
+          <span class="text-xs font-bold text-zinc-400 uppercase">Assigned / Active</span>
           <p id="adm-active" class="text-2xl font-black text-white mt-1">1</p>
         </div>
         <div class="glass-bubble p-5 border-l-4 border-brandYellow">
-          <span class="text-xs font-bold text-zinc-400 uppercase">Completed Today</span>
+          <span class="text-xs font-bold text-zinc-400 uppercase">Completed Visits</span>
           <p id="adm-done" class="text-2xl font-black text-brandYellow mt-1">1</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- Left 7 Cols: Admin Assignment Queue -->
         <div class="lg:col-span-7 glass-bubble-white p-6 space-y-4">
           <div class="flex items-center justify-between">
             <div>
               <span class="px-3 py-0.5 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">Admin Dispatcher</span>
-              <h3 class="text-xl font-black text-brandBlack mt-1">Assign User Tasks to Staff</h3>
+              <h3 class="text-xl font-black text-brandBlack mt-1">Assign Registered User Tasks</h3>
             </div>
             <button onclick="quickLogin('employee')" class="px-4 py-2 bubble-pill bg-brandBlack text-brandYellow font-black text-xs">
-              Open Staff PWA →
+              Switch to Staff PWA →
             </button>
           </div>
-
           <div id="admin-queue-list" class="space-y-3"></div>
         </div>
 
-        <!-- Right 5 Cols: Staff Roster & Payroll Export -->
         <div class="lg:col-span-5 glass-bubble p-6 space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-lg font-black text-brandYellow">Staff & Payroll</h3>
+            <h3 class="text-lg font-black text-brandYellow">Field Staff & Payroll</h3>
             <div class="flex gap-2">
               <button onclick="openModal('modal-new-emp')" class="px-3 py-1.5 bubble-pill bg-white text-brandBlack font-black text-xs">+ Staff</button>
               <button onclick="exportCSV()" class="px-3 py-1.5 bubble-pill bg-brandRed text-white font-black text-xs"><i class="fa-solid fa-file-csv mr-1"></i>CSV</button>
@@ -536,17 +618,17 @@
     </section>
 
     <!-- =================================================================== -->
-    <!-- VIEW 4: EMPLOYEE MOBILE PWA (GPS START & COMPLETE JOB)              -->
+    <!-- VIEW 4: EMPLOYEE (STAFF) MOBILE PWA                                 -->
     <!-- =================================================================== -->
     <section id="view-employee" class="hidden fade-in">
       <div class="max-w-md mx-auto glass-bubble p-5 border-2 border-brandYellow space-y-5">
         <div class="flex items-center justify-between">
           <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-xs uppercase">Employee PWA</span>
-          <span class="text-xs font-bold text-brandYellow"><i class="fa-solid fa-location-crosshairs"></i> GPS Ready</span>
+          <span class="text-xs font-bold text-brandYellow"><i class="fa-solid fa-location-crosshairs"></i> HTML5 GPS Active</span>
         </div>
 
         <div>
-          <label class="text-xs font-bold text-zinc-400 block mb-1">Active Field Staff:</label>
+          <label class="text-xs font-bold text-zinc-400 block mb-1">Logged-In Staff Member:</label>
           <select id="emp-switcher" onchange="changeEmployee(this.value)" class="w-full bg-brandYellow text-brandBlack font-black text-sm bubble-pill px-4 py-2.5"></select>
         </div>
 
@@ -563,17 +645,16 @@
     <div class="glass-bubble-white max-w-lg w-full p-6 sm:p-8 border-4 border-brandYellow space-y-5 fade-in">
       <div class="flex items-center justify-between">
         <div>
-          <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">1-Click Demo Access</span>
-          <h3 class="text-2xl font-black text-brandBlack mt-1">Portal Login Credentials</h3>
+          <span class="px-3 py-1 bubble-pill bg-brandRed text-white font-black text-[10px] uppercase">1-Click Demo Login</span>
+          <h3 class="text-2xl font-black text-brandBlack mt-1">Home Services Login Credentials</h3>
         </div>
         <button onclick="closeModal('modal-login')" class="w-9 h-9 rounded-full bg-brandBlack text-white font-black"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-      <p class="text-xs font-bold text-zinc-600">Select any role card below to auto-fill credentials and log right into that portal:</p>
+      <p class="text-xs font-bold text-zinc-600">Click any credential bubble below to log directly into that user role:</p>
 
-      <!-- 3 Role Credential Cards -->
       <div class="space-y-3">
-        <!-- Customer Credentials -->
+        <!-- Customer Login -->
         <div onclick="quickLogin('customer')" class="cursor-pointer p-4 rounded-3xl bg-zinc-100 hover:bg-brandYellow/30 border-2 border-brandBlack flex items-center justify-between transition">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-full bg-brandYellow text-brandBlack flex items-center justify-center font-black text-lg border border-brandBlack">
@@ -581,13 +662,13 @@
             </div>
             <div>
               <span class="font-black text-sm text-brandBlack block">1. Customer Login</span>
-              <span class="text-xs font-bold text-zinc-600">ID: <code class="text-brandBlack">priya@homeservices.in</code> • Pass: <code class="text-brandBlack">cust123</code></span>
+              <span class="text-xs font-bold text-zinc-600">User: <code class="text-brandBlack">priya@homeservices.in</code> • Pass: <code class="text-brandBlack">cust123</code></span>
             </div>
           </div>
           <span class="px-3.5 py-1.5 bubble-pill bg-brandBlack text-brandYellow font-black text-xs">Login →</span>
         </div>
 
-        <!-- Admin Credentials -->
+        <!-- Admin Login -->
         <div onclick="quickLogin('admin')" class="cursor-pointer p-4 rounded-3xl bg-zinc-100 hover:bg-brandRed/20 border-2 border-brandRed flex items-center justify-between transition">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-full bg-brandRed text-white flex items-center justify-center font-black text-lg">
@@ -595,21 +676,21 @@
             </div>
             <div>
               <span class="font-black text-sm text-brandBlack block">2. Admin Dispatcher Login</span>
-              <span class="text-xs font-bold text-zinc-600">ID: <code class="text-brandBlack">admin@homeservices.in</code> • Pass: <code class="text-brandBlack">admin123</code></span>
+              <span class="text-xs font-bold text-zinc-600">User: <code class="text-brandBlack">admin@homeservices.in</code> • Pass: <code class="text-brandBlack">admin123</code></span>
             </div>
           </div>
           <span class="px-3.5 py-1.5 bubble-pill bg-brandRed text-white font-black text-xs">Login →</span>
         </div>
 
-        <!-- Employee Credentials -->
+        <!-- Employee Login -->
         <div onclick="quickLogin('employee')" class="cursor-pointer p-4 rounded-3xl bg-zinc-100 hover:bg-brandYellow/30 border-2 border-brandBlack flex items-center justify-between transition">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-full bg-brandBlack text-brandYellow flex items-center justify-center font-black text-lg">
               <i class="fa-solid fa-id-badge"></i>
             </div>
             <div>
-              <span class="font-black text-sm text-brandBlack block">3. Employee (Staff) PWA Login</span>
-              <span class="text-xs font-bold text-zinc-600">Phone: <code class="text-brandBlack">+91 97411 10203</code> • OTP: <code class="text-brandBlack">4455</code></span>
+              <span class="font-black text-sm text-brandBlack block">3. Employee (Staff) Login</span>
+              <span class="text-xs font-bold text-zinc-600">Mobile: <code class="text-brandBlack">+91 97411 10203</code> • OTP: <code class="text-brandBlack">4455</code></span>
             </div>
           </div>
           <span class="px-3.5 py-1.5 bubble-pill bg-brandBlack text-white font-black text-xs">Login →</span>
@@ -618,7 +699,7 @@
 
       <div class="pt-2 border-t border-zinc-200 flex justify-between items-center text-xs">
         <button onclick="resetDemo()" class="text-brandRed font-black underline">Reset Demo Data</button>
-        <span class="text-zinc-500 font-bold">Yellow • Red • Black • White Theme</span>
+        <span class="text-zinc-500 font-bold">Home Services • Glass Bubble UI</span>
       </div>
     </div>
   </div>
@@ -664,7 +745,7 @@
   <!-- STATE & LOGIC CONTROLLER                                              -->
   <!-- ===================================================================== -->
   <script>
-    const STORAGE_KEY = 'HOME_SERVICES_BUBBLE_V5';
+    const STORAGE_KEY = 'HOME_SERVICES_BUBBLE_V6';
 
     const PLANS = {
       PLAN_3K: { name: '₹3,000 Essential', price: 3000, visits: 26 },
@@ -692,8 +773,8 @@
           { id: 'EMP-3', name: 'Renukaamma', phone: '+91 91104 88321', salary: 11500 }
         ],
         tasks: [
-          { id: 'TSK-101', userId: 'USR-1', empId: null, date: t, time: '09:30 AM', chores: ['Floor Sweep & Mop', 'Utensil Wash'], note: 'Clean kitchen balcony first', status: 'PENDING' },
-          { id: 'TSK-102', userId: 'USR-2', empId: 'EMP-1', date: t, time: '11:30 AM', chores: ['Kitchen Prep', 'Utensil Wash'], note: 'Chop veggies for lunch', status: 'ASSIGNED' }
+          { id: 'TSK-101', userId: 'USR-1', empId: null, date: t, time: '09:30 AM', chores: ['Trained House Help (Daily Maid)'], note: 'Clean kitchen balcony first', status: 'PENDING' },
+          { id: 'TSK-102', userId: 'USR-2', empId: 'EMP-1', date: t, time: '11:30 AM', chores: ['Intense Bathroom Cleaning'], note: 'Deep clean master bathroom', status: 'ASSIGNED' }
         ]
       };
     }
@@ -734,23 +815,39 @@
       if (backBtn) backBtn.classList.toggle('hidden', viewName === 'home');
 
       const roleLabels = {
-        home: 'Public Home',
-        customer: 'Logged In: Customer',
-        admin: 'Logged In: Admin',
-        employee: 'Logged In: Staff PWA'
+        home: 'Home Page',
+        customer: 'Customer Portal',
+        admin: 'Admin Dispatcher',
+        employee: 'Employee PWA'
       };
-      document.getElementById('session-role-label').textContent = roleLabels[viewName] || 'Public Home';
+      document.getElementById('session-role-label').textContent = roleLabels[viewName] || 'Home Page';
       renderAll();
-    }
-
-    function openLoginDrawer() {
-      openModal('modal-login');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function quickLogin(role) {
       closeModal('modal-login');
       switchView(role);
-      toast(`Logged into ${role.toUpperCase()} portal!`);
+      toast(`Switched to ${role.toUpperCase()} view!`);
+    }
+
+    // 1-Click Service Booking from Home Page Spotlight / Category Cards
+    function quickBookService(serviceName, price) {
+      const u = db.users.find(x => x.id === db.activeUserId) || db.users[0];
+      const newTask = {
+        id: 'TSK-' + Math.floor(100 + Math.random() * 900),
+        userId: u.id,
+        empId: null,
+        date: todayISO(),
+        time: '10:00 AM',
+        chores: [serviceName],
+        note: `Booked from Home Spotlight (₹${price})`,
+        status: 'PENDING'
+      };
+      db.tasks.unshift(newTask);
+      saveDB();
+      switchView('customer');
+      toast(`Booked "${serviceName}"! Sent to Admin Dispatch.`);
     }
 
     // CUSTOMER PORTAL
